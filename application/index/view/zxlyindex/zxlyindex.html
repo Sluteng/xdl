@@ -1,0 +1,112 @@
+{extend name="base/base" /}
+
+{block name="tdk"}
+{volist name="sytdkResult" id="sytdk"}
+{volist name="zxlytdkResult" id="zxlytdk"}
+{if $zxlytdk.tdktitle==null}
+<title>{$sytdk.title}</title>
+{else}
+<title>{$zxlytdk.tdktitle}</title>
+{/if}
+<meta name="Description" Content="{$zxlytdk.tdkdescription}">
+{if $zxlytdk.tdkkeywords==null}
+<meta name="Keywords" Content="{$sytdk.keywords}">
+{else}
+<meta name="Keywords" Content="{$zxlytdk.tdkkeywords}">
+{/if}
+{/volist}
+{/volist}
+{/block}
+
+{block name="content"}
+<!--导航结束-->
+<!--内页大图开始-->
+<div class="nybanner" aos="fade-up" aos-easing="ease" aos-duration="700">
+  {volist name="largeimgResult" id="largeimg"}
+    <img src="{$largeimg.img}" alt="电动摩托车锂电池">
+    {/volist}
+</div>
+<!--内页大图结束-->
+<div class="submian">
+  <div class="w1200 clearfix">
+    <div class="sobtitle"><s class="ico"></s>您的位置：<a href='../index.html'>主页</a> >
+      {volist name="navbarResult" id="navbar"}
+      {if $key == 4}
+      <a href='/zxlyindex.html'>{$navbar.navbar}</a>
+      {/if}
+      {/volist}
+    </div>
+    <div class="subleft fl">
+  <!--栏目分类开始-->
+  <div class="lefta bor9">
+    <div class="title">
+      {volist name="navbarResult" id="navbar"}
+      {if $key == 4}
+      <h2>{$navbar.navbar}</h2>
+      {/if}
+      {/volist}
+    </div>
+    <div class="comt">
+      <ul>
+      </ul>
+    </div>
+  </div>
+  <!--栏目分类结束-->
+  <!--推荐产品开始-->
+  {include file="content/content" /}
+  <!--联系我们结束-->
+</div>
+    <div class="subright fr">
+      <!--留言框架开始-->
+      <div class="t2" id="formData">在线留言</div>
+      <div class="formData clearfix">
+        <form class="form_book" action="/zxlyindex1" enctype="multipart/form-data" method="post" onsubmit="return checkForm();">
+          <input type="hidden" name="action" value="post">
+          <input type="hidden" name="diyid" value="1">
+          <input type="hidden" name="do" value="2">
+          <div class="item">
+            <label for="name">姓名</label>
+            <input type="text" name="name" id="name" class="txt" data-rule="姓名">
+            <span class="red">*</span></div>
+          <div class="item mr0">
+            <label for="tel">电话</label>
+            <input type="text" name="tel" id="tel" class="txt" data-rule="手机号码">
+            <span class="red">*</span></div>
+          <div class="item liuyan clearfix">
+            <label for="Content">留言内容</label>
+            <textarea type="text" name="content" id="content" maxlength="300" data-rule="留言内容"></textarea>
+          </div>
+          <input type="hidden" name="dede_fields" value="name,text;tel,text;content,text">
+          <input type="hidden" name="dede_fieldshash" value="b430c226756ec920d6ba032b04a5184a">
+          <div class="bot fl clearfix">
+            <input type="submit" value="提交" class="sub fr">
+          </div>
+        </form>
+        <script type="text/javascript">
+            function checkForm()
+            {
+              if(document.getElementById('name').value.length == 0)
+              {
+                alert('姓名不能为空！');
+                return false;
+              }
+              if(document.getElementById('tel').value.length == 0)
+              {
+                alert('电话不能为空！');
+                return false;
+              }
+              if(document.getElementById('content').value.length == 0)
+              {
+                alert('留言内容不能为空！');
+                return false;
+              }
+              return true;
+            }
+          </script>
+      </div>
+      <!--留言框架结束-->
+    </div>
+  </div>
+</div>
+<!--页尾开始-->
+{/block}

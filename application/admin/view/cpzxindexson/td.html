@@ -1,0 +1,10 @@
+<td><input type="checkbox" name="id[]" value="{$vo.id}"></td>
+<td>{$vo.id}</td>
+<td>{$vo.state}</td>
+<td>{$vo.title}</td>
+<!-- <td>{$vo.tdktitle}</td> -->
+<!-- <td>{$vo.tdkdescription}</td> -->
+<!-- <td>{$vo.tdkkeywords}</td> -->
+<td>{$vo.create_time|date="Y-m-d",###}</td>
+<td>{$vo.update_time|date="Y-m-d",###}</td>
+<td>{$vo.status|get_status}</td>

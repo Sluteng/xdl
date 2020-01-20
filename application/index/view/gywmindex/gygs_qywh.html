@@ -1,0 +1,92 @@
+{extend name="base/base" /}
+
+{block name="tdk"}
+{volist name="sytdkResult" id="sytdk"}
+{volist name="gygsqywhResult" id="gygsqywh"}
+{if $gygsqywh.tdktitle==null}
+<title>{$sytdk.tdktitle}</title>
+{else}
+<title>{$gygsqywh.tdktitle}</title>
+{/if}
+<meta name="Description" Content="{$gygsqywh.tdkdescription}">
+{if $gygsqywh.tdkkeywords==null}
+<meta name="Keywords" Content="{$sytdk.tdkkeywords}">
+{else}
+<meta name="Keywords" Content="{$gygsqywh.tdkkeywords}">
+{/if}
+{/volist}
+{/volist}
+{/block}
+
+{block name="content"}
+<!--内页大图开始-->
+<div class="nybanner" aos="fade-up" aos-easing="ease" aos-duration="700">
+  {volist name="largeimgResult" id="largeimg"}
+  <img src="{$largeimg.img}" alt="">
+  {/volist}
+</div>
+<!--内页大图结束-->
+<div class="submian">
+  <div class="w1200 clearfix">
+    <div class="sobtitle">
+      <s class="ico"></s>
+      您的位置：
+      <a href='/index.html'>主页</a> >
+
+      {volist name="navbarResult" id="navbar"}
+        {if $key == 0}
+        <a href='/gywmindex.html'>{$navbar.navbar}</a> >
+        {volist name="navbarsonResult" id="navbarson"}
+        {if $navbar.id == $navbarson.state}
+        {if $navbarson.id == 1}
+        <a href='/gygs_qywh.html'>{$navbarson.navbarson}</a>
+      {/if}
+      {/if}
+        {/volist}
+        {/if}
+        {/volist}
+      </div>
+    <div class="subleft fl">
+  <!--栏目分类开始-->
+  <div class="lefta bor9">
+    <div class="title">
+      {volist name="navbarResult" id="navbar"}
+        {if $key == 0}
+      <h2>{$navbar.navbar}</h2>
+       {/if}
+        {/volist}
+    </div>
+    <div class="comt">
+      <ul>
+        {volist name="navbarResult" id="navbar"}
+        {if $key == 0}
+        {volist name="navbarsonResult" id="navbarson"}
+        {if $navbar.id == $navbarson.state}
+        <li class='{if $navbarson.id == 1}hover{/if}'><a href="/{$navbarson.link}.html" title="{$navbarson.navbarson}">{$navbarson.navbarson}</a> </li>
+        {/if}
+        {/volist}
+        {/if}
+        {/volist}
+      </ul>
+    </div>
+  </div>
+  <!--栏目分类结束-->
+  <!--推荐产品开始-->
+  {include file="content/content" /}
+  <!--联系我们结束-->
+</div>
+    <div class="subright fr">
+      <!--单页内容开始-->
+      <div class="aboutlist">
+          <div style="text-align: center;">&nbsp;
+          {volist name="gygsqywhResult" id="gygsqywh"}
+	          {$gygsqywh.editorValue|htmlspecialchars_decode}
+          {/volist}
+        </div>
+      </div>
+      <!--单页内容结束-->
+    </div>
+  </div>
+</div>
+<!--页尾开始-->
+{/block}

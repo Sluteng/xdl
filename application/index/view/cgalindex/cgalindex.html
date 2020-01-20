@@ -1,0 +1,94 @@
+{extend name="base/base" /}
+
+{block name="tdk"}
+{volist name="sytdkResult" id="sytdk"}
+{volist name="cgaltdkResult" id="cgaltdk"}
+{if $cgaltdk.tdktitle==null}
+<title>{$sytdk.tdktitle}</title>
+{else}
+<title>{$cgaltdk.tdktitle}</title>
+{/if}
+<meta name="Description" Content="{$cgaltdk.tdkdescription}">
+{if $cgaltdk.tdkkeywords==null}
+<meta name="Keywords" Content="{$sytdk.tdkkeywords}">
+{else}
+<meta name="Keywords" Content="{$cgaltdk.tdkkeywords}">
+{/if}
+{/volist}
+{/volist}
+{/block}
+
+{block name="content"}
+<!--导航结束-->  
+<!--内页大图开始-->
+<div class="nybanner" aos="fade-up" aos-easing="ease" aos-duration="700">
+  {volist name="largeimgResult" id="largeimg"}
+  <img src="{$largeimg.img}" alt="ETC备用电源">
+  {/volist}
+</div>
+<!--内页大图结束-->
+<div class="submian">
+  <div class="w1200 clearfix">
+    <div class="sobtitle"><s class="ico"></s>您的位置：<a href='../index.html'>主页</a> >
+      {volist name="navbarResult" id="navbar"}
+    {if $key == 3}
+      <a href='/cgalindex.html'>{$navbar.navbar}</a>
+      {/if}
+    {/volist}
+    </div>
+    <div class="subleft fl"> 
+  <!--栏目分类开始-->
+  <div class="lefta bor9">
+    <div class="title">
+      {volist name="navbarResult" id="navbar"}
+    {if $key == 3}
+      <h2>{$navbar.navbar}</h2>
+      {/if}
+    {/volist}
+    </div>
+    <div class="comt">
+      <ul>
+        {volist name="navbarson1Result" id="navbarson1"}
+        <li class='{if $navbarson1.id == $id}hover{/if}'>
+          <a href="/cgalindexid/{$navbarson1.id}.html" title="{$navbarson1.navbarson}">{$navbarson1.navbarson}</a>
+        </li>
+        {/volist}
+      </ul>
+    </div>
+  </div>
+  <!--栏目分类结束--> 
+  
+  <!--推荐产品开始-->
+  {include file="content/content" /}
+  <!--联系我们结束--> 
+</div>
+
+    <div class="subright fr"> 
+      <!--产品列表开始-->
+      <div class="honorlist list_imgH clearfix">
+        <ul class="list clearfix">
+          {volist name="cgalindexResult" id="cgalindex"}
+          <li class='item' style='{if ($key+1)%3==0}margin-right:0;{/if}'>
+            <a href="/cgalcon/{$cgalindex.id}" title="{$cgalindex.title}">
+              <img src="{$cgalindex.img}" alt="{$cgalindex.title}">
+              <div class="item_mask">
+                <div class="item_link_icon ico"></div>
+              </div>
+              <span>{$cgalindex.title}</span>
+            </a>
+          </li>
+          {/volist}
+        </ul>
+        <div class="clear"></div>
+        <!--分页样式-->
+        <div class="pglist">{$page}</div>
+      </div>
+      <!--产品列表结束--> 
+      <!--推荐资讯开始-->
+      {include file="content/xgtj" /}
+      <!--推荐资讯结束--> 
+    </div>
+  </div>
+</div>
+<!--页尾开始-->
+{/block}

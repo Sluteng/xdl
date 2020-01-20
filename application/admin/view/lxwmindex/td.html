@@ -1,0 +1,13 @@
+<td><input type="checkbox" name="id[]" value="{$vo.id}"></td>
+<td>{$vo.id}</td>
+<td>{$vo.company|high_light=$Request.param.company}</td>
+<td>{$vo.qq}</td>
+<td>{$vo.telephone}</td>
+<td>{$vo.fax}</td>
+<td>{$vo.code}</td>
+<td>{$vo.mailbox}</td>
+<td>{$vo.mobilephone}</td>
+<td>{$vo.address|high_light=$Request.param.address}</td>
+<td>{$vo.create_time|date="Y-m-d",###}</td>
+<td>{$vo.update_time|date="Y-m-d",###}</td>
+<td>{$vo.status|get_status}</td>

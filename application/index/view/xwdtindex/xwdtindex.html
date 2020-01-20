@@ -1,0 +1,102 @@
+{extend name="base/base" /}
+
+{block name="tdk"}
+{volist name="sytdkResult" id="sytdk"}
+{volist name="xwdtindexResult" id="xwdtindex"}
+{if $xwdtindex.tdktitle==null}
+<title>{$sytdk.tdktitle}</title>
+{else}
+<title>{$xwdtindex.tdktitle}</title>
+{/if}
+<meta name="Description" Content="{$xwdtindex.tdkdescription}">
+{if $xwdtindex.tdkkeywords==null}
+<meta name="Keywords" Content="{$sytdk.tdkkeywords}">
+{else}
+<meta name="Keywords" Content="{$xwdtindex.tdkkeywords}">
+{/if}
+{/volist}
+{/volist}
+{/block}
+
+{block name="content"}
+<!--内页大图开始-->
+<div class="nybanner" aos="fade-up" aos-easing="ease" aos-duration="700">
+  {volist name="largeimgResult" id="largeimg"}
+  <img src="{$largeimg.img}" alt="电动摩托车锂电池">
+  {/volist}
+</div>
+<!--内页大图结束-->
+<div class="submian">
+  <div class="w1200 clearfix">
+    <div class="sobtitle"><s class="ico"></s>您的位置：<a href='../index.html'>主页</a> > 
+    {volist name="navbarResult" id="navbar"}
+    {if $key == 2}
+      <a href='/xwdtindex.html'>{$navbar.navbar}</a> >
+      {volist name="navbarson1Result" id="navbarson1"}
+      {if $navbarson1.id == $id}
+      <a href='hangyexinwen1.html' class='hover'>{$navbarson1.navbarson}</a>
+      {/if}
+      {/volist}
+    {/if}
+    {/volist}
+      </div>
+    <div class="subleft fl">
+  <!--栏目分类开始-->
+  <div class="lefta bor9">
+    <div class="title">
+      {volist name="navbarResult" id="navbar"}
+    {if $key == 2}
+      <h2>{$navbar.navbar}</h2>
+      {/if}
+    {/volist}
+    </div>
+    <div class="comt">
+      <ul>
+        {volist name="navbarson1Result" id="navbarson1"}
+        <li class='{if $navbarson1.id == $id}hover{/if}'>
+          <a href="/xwdtid/{$navbarson1.id}.html" title="{$navbarson1.navbarson}">{$navbarson1.navbarson}</a>
+        </li>
+        {/volist}
+      </ul>
+    </div>
+  </div>
+  <!--栏目分类结束--> 
+  
+  <!--推荐产品开始-->
+  {include file="content/content" /}
+  <!--联系我们结束--> 
+</div>
+
+    <div class="subright fr"> 
+      <!--文章列表开始-->
+      <div class="thumblist">
+        <ul class="list clearfix">
+          {volist name="xwdtconResult" id="xwdtcon"}
+          <li class="item">
+            <a class="clearfix" href="/xwdtcontent/{$xwdtcon.id}.html" title="">
+              <div class="txt fr">
+                <h3>{$xwdtcon.title}</h3>
+                <div class="mark"><span>时间：{$xwdtcon.create_time|date="Y-m-d",###}</span><span>浏览量：{$xwdtcon.shownum}</span></div>
+                <p>{$xwdtcon.editorValue|htmlspecialchars_decode|strip_tags}</p>
+              </div>
+              <div class="img">
+                <img src="{$xwdtcon.img}" alt="{$xwdtcon.title}">
+              </div>
+            </a>
+          </li>
+          {/volist}
+        </ul>
+        <div class="clear"></div>
+        <!--分页样式-->
+        <div class="pglist">
+          {$page}
+        </div>
+      <!--文章列表结束--> 
+      <!--推荐资讯开始-->
+      {include file="content/xgtj" /}
+      <!--推荐资讯结束--> 
+    </div>
+  </div>
+</div>
+<!--页尾开始-->
+{/block}

@@ -1,0 +1,239 @@
+{extend name="base/base" /}
+{block name="content"}
+<!--幻灯片大图开始-->
+<div id="banner_main" aos="fade-up" aos-easing="ease" aos-duration="700" aos-delay="100">
+  <div id="banner" class="banner">
+    <ul class="list clearfix">
+      {volist name="sybannerResult" id="sybanner"}
+      <li>
+        <a href="javascript:;">
+          <img src="{$sybanner.banner_img}" alt="锂电池">
+        </a>
+      </li>
+      {/volist}
+    </ul>
+    <div class="tip"></div>
+    <a href="javascript:;" id="btn_prev" class="ico"></a> <a href="javascript:;" id="btn_next" class="ico"></a> </div>
+</div>
+<!--幻灯片大图结束-->
+
+<div class="index"> 
+  <!--产品中心开始--> 
+  <div id="floor_2_main">
+    <div class="floor_2 w1200">
+      <div class="in_title clearfix" aos="fade-up" aos-easing="ease" aos-duration="700">
+        <p class="entit" aos="fade-up" aos-easing="ease" aos-duration="700">Product Classification</p>
+        <h3 class="tit clearfix" aos="fade-up" aos-easing="ease" aos-duration="700" aos-delay="100"><em class="line fl"></em><span class="word">产品分类</span><em class="line fr"></em></h3>
+      </div>
+      <!--产品分类开始-->
+      <div class="tab" aos="fade-up" aos-easing="ease" aos-duration="700" aos-delay="200">
+        {volist name="navbarResult" id="navbar"}
+        {if $key == 1}
+        {volist name="navbarsonResult" id="navbarson"}
+        {if $navbar.id == $navbarson.state}
+        <a href="/{$navbarson.link}.html" title="{$navbarson.navbarson}">{$navbarson.navbarson}</a>
+        {/if}
+        {/volist}
+        {/if}
+        {/volist}
+      </div>
+      <!--产品分类结束-->
+      <div class="proCenter" aos="fade-up" aos-easing="ease" aos-duration="700" aos-delay="200">
+        <ul class="list clearfix">
+          {volist name="cpzxcontentResult" id="cpzxcontent"}
+          <li><a href="/cpzxcontent/{$cpzxcontent.id}.html" title="{$cpzxcontent.title}">
+            <img src="{$cpzxcontent.img}" alt="电动摩托车锂电池">
+            <div class="title clearfix">
+              <h3 class="tit fl">{$cpzxcontent.title}</h3>
+              <em class="icon fr"></em></div>
+            </a>
+          </li>
+          {/volist}
+        </ul>
+      </div>
+      <div class="more clearfix" aos="fade-up" aos-easing="ease" aos-duration="700">
+        <div class="line fl"></div>
+        <a class="look_more fl" href="/cpzxindex.html" title="查看更多>>">查看更多>></a>
+        <div class="line fl"></div>
+      </div>
+    </div>
+  </div> 
+  <!--产品中心结束--> 
+  <!--小banner开始-->
+  <div class="index_slip" aos="fade-up" aos-easing="ease" aos-duration="700">
+    <div class="slip w1200">
+      <div class="slip_tit fl">
+        <h3 class="tit1" aos="fade-up" aos-easing="ease" aos-duration="700" aos-delay="400">河北鑫动力新能源科技有限公司</h3>
+        {volist name="lxwmindexResult" id="lxwmindex"}
+        <p class="tit2" aos="fade-up" aos-easing="ease" aos-duration="700" aos-delay="700">提供良好的服务！&nbsp;&nbsp;&nbsp;咨询热线：{$lxwmindex.telephone}</p>
+        {/volist}
+      </div>
+      <a class="slip_btn fl" aos="fade-left" aos-easing="ease" aos-duration="700" aos-delay="400" href="/zxlyindex.html">立即咨询</a> </div>
+  </div>
+  <!--小banner结束--> 
+  
+  <!--产品优势开始-->
+  
+  <div id="floor_3_main">
+    <div class="floor_3 w1200"> <div class="in_title clearfix" aos="fade-up" aos-easing="ease" aos-duration="700">
+        <p class="entit" aos="fade-up" aos-easing="ease" aos-duration="700">Enterprise Advantage
+</p>
+        <h3 class="tit clearfix" aos="fade-up" aos-easing="ease" aos-duration="700" aos-delay="100"><em class="line fl"></em><span class="word">企业优势</span><em class="line fr"></em></h3>
+      </div>
+      <div class="proAdvant">
+        <ul class="list clearfix">
+          {volist name="syadvantageResult" id="syadvantage"}
+          <li aos="fade-up" aos-easing="ease" aos-duration="700" aos-delay="{if $key == 1}300{/if}{if $key == 2} 500{/if}">
+            <a><img class="img" src="{$syadvantage.img}" alt="{$syadvantage.title}">
+            <div class="title">
+              <h3 class="tit">{$syadvantage.title}</h3>
+              <p class="cont">{$syadvantage.content}</p>
+            </div>
+            </a>
+          </li>
+          {/volist}
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <!--产品优势结束--> 
+  
+  <!--工程案例开始--> 
+  <div id="floor_4_main">
+    <div class="floor_4 w1200">
+      <div class="in_title clearfix" aos="fade-up" aos-easing="ease" aos-duration="700">
+        <p class="entit" aos="fade-up" aos-easing="ease" aos-duration="700">CASE</p>
+        <h3 class="tit clearfix" aos="fade-up" aos-easing="ease" aos-duration="700" aos-delay="100"><em class="line fl"></em><span class="word">成功案例</span><em class="line fr"></em></h3>
+      </div>
+      <!--案例分类开始-->
+      <div class="tab" aos="fade-up" aos-easing="ease" aos-duration="700" aos-delay="200">
+        {volist name="navbarResult" id="navbar"}
+        {if $key == 3}
+        {volist name="navbarsonResult" id="navbarson"}
+        {if $navbar.id == $navbarson.state}
+        <a href="/{$navbarson.link}.html" title="{$navbarson.navbarson}">{$navbarson.navbarson}</a>
+        {/if}
+        {/volist}
+        {/if}
+        {/volist}
+      </div>
+      <!--案例分类结束-->
+      <div class="proCase" id="scroll" aos="fade-up" aos-easing="ease" aos-duration="700" aos-delay="200">
+        <div class="bd">
+          <ul class="list clearfix">
+            {volist name="cgalconResult" id="cgalcon"}
+            <li>
+              <a href="/cgalcon/{$cgalcon.id}.html" title="{$cgalcon.title}">
+                <img class="img" src="{$cgalcon.img}" alt="{$cgalcon.title}">
+                <div class="title">
+                  <h3 class="tit">{$cgalcon.title}</h3>
+                  <p class="cont">{$cgalcon.editorValue|htmlspecialchars_decode|strip_tags}</p>
+                </div>
+                <p class="/cgalcon/{$cgalcon.id}.html">详情>></p>
+              </a>
+            </li>
+            {/volist}
+          </ul>
+        </div>
+        <div class="hd"><span class="prev ico"></span><span class="next ico"></span></div>
+      </div>
+      <div class="more clearfix" aos="fade-up" aos-easing="ease" aos-duration="700">
+        <div class="line fl"></div>
+        <a class="look_more fl" href="/cgalindex.html" title="查看更多>>">查看更多>></a>
+        <div class="line fl"></div>
+      </div>
+    </div>
+  </div> 
+  <!--工程案例结束--> 
+  <!--小banner开始-->
+  <div class="index_slip index_slip1" aos="fade-up" aos-easing="ease" aos-duration="700">
+    <div class="slip w1200">
+      <div class="slip_tit fl">
+        <h3 class="tit1" aos="fade-up" aos-easing="ease" aos-duration="700" aos-delay="400">产品远销世界各地，深受广大用户的青睬。</h3>
+        {volist name="lxwmindexResult" id="lxwmindex"}
+        <p class="tit2" aos="fade-up" aos-easing="ease" aos-duration="700" aos-delay="700">诚信为本 实事求是 精于研发 勇于创新&nbsp;&nbsp;&nbsp;&nbsp;咨询热线：{$lxwmindex.telephone}</p>
+        {/volist}
+      </div>
+      <a class="slip_btn fl" aos="fade-left" aos-easing="ease" aos-duration="700" aos-delay="400" href="/zxlyindex.html">立即咨询</a></div>
+  </div>
+  <!--小banner结束--> 
+  
+  <!--关于我们开始--> 
+  <div id="floor_1_main">
+    <div class="floor_1 w1200">
+      <div class="about clearfix">
+        {volist name="sygywmindexResult" id="sygywmindex"}
+        <a class="item fl" href="/gywmindex.html" aos="fade-right" aos-easing="ease" aos-duration="700"> <img src="{$sygywmindex.img}" alt="关于我们">
+        </a>
+        {/volist}
+        <div class="contW fl">
+          <div class="title">
+            <p class="entit" aos="fade-up" aos-easing="ease" aos-duration="700" aos-delay="300">About Us</p>
+            <h3 class="tit" aos="fade-up" aos-easing="ease" aos-duration="700" aos-delay="400">关于我们</h3>
+          </div>
+          <a href="/gywmindex.html">
+          {volist name="sygywmindexResult" id="sygywmindex"}
+          <p class="cont" aos="fade-up" aos-easing="ease" aos-duration="700" aos-delay="500">{$sygywmindex.editorValue|htmlspecialchars_decode|strip_tags}</p>
+          {/volist}
+          <p class="view_detail" aos="fade-up" aos-easing="ease" aos-duration="700" aos-delay="600">详情>></p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div> 
+  <!--关于我们结束--> 
+  
+  <!--新闻动态开始--> 
+  <div id="floor_5_main">
+    <div class="floor_5 w1200">
+      <div class="in_title clearfix" aos="fade-up" aos-easing="ease" aos-duration="700">
+        <p class="entit" aos="fade-up" aos-easing="ease" aos-duration="700">News</p>
+        <h3 class="tit clearfix" aos="fade-up" aos-easing="ease" aos-duration="700" aos-delay="100"><em class="line fl"></em><span class="word">新闻动态</span><em class="line fr"></em></h3>
+      </div>
+      <!--新闻分类开始-->
+      <div class="tab" aos="fade-up" aos-easing="ease" aos-duration="700" aos-delay="200">
+        {volist name="navbarResult" id="navbar"}
+        {if $key == 2}
+        {volist name="navbarsonResult" id="navbarson"}
+        {if $navbar.id == $navbarson.state}
+        <a href="/{$navbarson.link}.html" title="{$navbarson.navbarson}">{$navbarson.navbarson}</a>
+        {/if}
+        {/volist}
+        {/if}
+        {/volist}
+      </div>
+      <!--新闻分类结束-->
+      <div class="inews" id="inews" aos="fade-up" aos-easing="ease" aos-duration="700" aos-delay="200">
+        <div class="hd"><span class="prev ico"></span><span class="next ico"></span></div>
+        <div class="bd">
+          <div class="ulWrap clearfix">
+            <div class="list">
+              {volist name="xwdtcon1Result" id="xwdtcon1"}
+              <li class='clearfix' style='{if ($key+1)%2==0}margin-right:0;{/if}'>
+                <a href="/xwdtcontent/{$xwdtcon1.id}.html" title="{$xwdtcon1.title}">
+                  <div class="time fl">
+                    <p class="day">{$xwdtcon1.create_time|date="d",###}</p>
+                    <p class="year">{$xwdtcon1.create_time|date="Y-m",###}</p>
+                  </div>
+                  <div class="title fl">
+                    <h3 class="tit">{$xwdtcon1.title}</h3>
+                    <p class="cont">{$xwdtcon1.editorValue|htmlspecialchars_decode|strip_tags}</p>
+                  </div>
+                </a>
+              </li>
+            {/volist}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="more clearfix" aos="fade-up" aos-easing="ease" aos-duration="700">
+        <div class="line fl"></div>
+        <a class="look_more fl" href="/xwdtindex.html" title="查看更多>>">查看更多>></a>
+        <div class="line fl"></div>
+      </div>
+    </div>
+  </div> 
+  <!--新闻动态结束--> 
+</div>
+{/block}

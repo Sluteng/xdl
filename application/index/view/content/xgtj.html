@@ -1,0 +1,11 @@
+<h4 class="anlitopH4"><span>推荐资讯</span></h4>
+      <div class="divremmnews">
+        <ul class="clearfix">
+          {volist name="xwdtcon1Result" id="xwdtcon1"}
+          <li>
+            <span class="fr">{$xwdtcon1.create_time|date="Y-m-d",###}</span>
+            <a href="/xwdtcontent/{$xwdtcon1.id}" title="">{$xwdtcon1.title}</a>
+          </li>
+          {/volist}
+        </ul>
+      </div>

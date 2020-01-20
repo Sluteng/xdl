@@ -1,0 +1,81 @@
+{extend name="base/base" /}
+
+{block name="tdk"}
+{volist name="sytdkResult" id="sytdk"}
+{volist name="sygywmindexResult" id="sygywmindex"}
+{if $sygywmindex.tdktitle==null}
+<title>{$sytdk.tdktitle}</title>
+{else}
+<title>{$sygywmindex.tdktitle}</title>
+{/if}
+<meta name="Description" Content="{$sygywmindex.tdkdescription}">
+{if $sygywmindex.tdkkeywords==null}
+<meta name="Keywords" Content="{$sytdk.tdkkeywords}">
+{else}
+<meta name="Keywords" Content="{$sygywmindex.tdkkeywords}">
+{/if}
+{/volist}
+{/volist}
+{/block}
+
+{block name="content"}
+<!--内页大图开始-->
+<div class="nybanner" aos="fade-up" aos-easing="ease" aos-duration="700">
+  {volist name="largeimgResult" id="largeimg"}
+  <img src="{$largeimg.img}" alt="电动摩托车锂电池">
+  {/volist}
+</div>
+<!--内页大图结束-->
+<div class="submian">
+  <div class="w1200 clearfix">
+    <div class="sobtitle"><s class="ico"></s>您的位置：<a href='/index.html'>主页</a> > 
+      {volist name="navbarResult" id="navbar"}
+    {if $key == 0}
+      <a href='/gywmindex.html'>{$navbar.navbar}</a></div>
+    {/if}
+    {/volist}
+
+    <div class="subleft fl">
+  <!--栏目分类开始-->
+  <div class="lefta bor9">
+    <div class="title">
+      <h2>关于我们</h2>
+    </div>
+    <div class="comt">
+      <ul>
+        {volist name="navbarResult" id="navbar"}
+        {if $key == 0}
+        {volist name="navbarsonResult" id="navbarson"}
+        {if $navbar.id == $navbarson.state}
+        <li><a href="/{$navbarson.link}.html" title="{$navbarson.navbarson}">{$navbarson.navbarson}</a> </li>
+        {/if}
+        {/volist}
+        {/if}
+        {/volist}
+      </ul>
+    </div>
+  </div>
+  <!--栏目分类结束-->
+  <!--推荐产品开始-->
+  {include file="content/content" /}
+  <!--联系我们结束-->
+</div>
+
+    <div class="subright fr">
+      <!--单页内容开始-->
+      <div class="aboutlist">
+        <div class="wenij">
+        {volist name="sygywmindexResult" id="sygywmindex"}
+                <p>{$sygywmindex.editorValue|htmlspecialchars_decode}</p>
+                {/volist}
+</div>
+      </div>
+      <!--单页内容结束-->
+      <!-- <div class="tupian">
+         <img src="__IMG__/guanyu.jpg" alt="" style="width:400px;height:500px; margin-left:251px;">
+      </div> -->
+    </div>
+  </div>
+</div>
+<!--页尾开始-->
+{/block}

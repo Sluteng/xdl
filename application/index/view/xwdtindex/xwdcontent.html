@@ -1,0 +1,102 @@
+{extend name="base/base" /}
+
+{block name="tdk"}
+{volist name="sytdkResult" id="sytdk"}
+{volist name="xwdtcontdkResult" id="xwdtcontdk"}
+{if $xwdtcontdk.tdktitle==null}
+<title>{$sytdk.tdktitle}</title>
+{else}
+<title>{$xwdtcontdk.tdktitle}</title>
+{/if}
+<meta name="Description" Content="{$xwdtcontdk.tdkdescription}">
+{if $xwdtcontdk.tdkkeywords==null}
+<meta name="Keywords" Content="{$sytdk.tdkkeywords}">
+{else}
+<meta name="Keywords" Content="{$xwdtcontdk.tdkkeywords}">
+{/if}
+{/volist}
+{/volist}
+{/block}
+
+{block name="content"}
+<!--导航结束-->  
+<!--内页大图开始-->
+<div class="nybanner" aos="fade-up" aos-easing="ease" aos-duration="700">
+  {volist name="largeimgResult" id="largeimg"}
+  <img src="{$largeimg.img}" alt="">
+  {/volist}
+</div>
+<!--内页大图结束-->
+<div class="submian">
+  <div class="w1200 clearfix">
+    <div class="sobtitle"><s class="ico"></s>您的位置：<a href='../index.html'>主页</a> >
+    {volist name="navbarResult" id="navbar"}
+    {if $key == 2}
+      <a href='/xwdtindex.html'>{$navbar.navbar}</a> >
+      {volist name="navbarson1Result" id="navbarson1"}
+      {if $navbarson1.id == $id}
+      <a href='hangyexinwen1.html' class='hover'>{$navbarson1.navbarson}</a>
+      {/if}
+      {/volist}
+    {/if}
+    {/volist}
+    </div>
+    <div class="subleft fl">
+  <!--栏目分类开始-->
+  <div class="lefta bor9">
+    <div class="title">
+      {volist name="navbarResult" id="navbar"}
+    {if $key == 2}
+      <h2>{$navbar.navbar}</h2>
+      {/if}
+    {/volist}
+    </div>
+    <div class="comt">
+      <ul>
+        {volist name="navbarson1Result" id="navbarson1"}
+        <li class='{if $navbarson1.id == $id}hover{/if}'>
+          <a href="/xwdtid/{$navbarson1.id}.html" title="{$navbarson1.navbarson}">{$navbarson1.navbarson}</a>
+        </li>
+        {/volist}
+      </ul>
+    </div>
+  </div>
+  <!--栏目分类结束-->
+  <!--推荐产品开始-->
+  {include file="content/content" /}
+  <!--联系我们结束--> 
+</div>
+
+    <div class="subright fr"> 
+      <!--文章内容开始-->
+      <div class="conBox">
+        {volist name="xwdtcontentResult" id="xwdtcontent"}
+        <div class="ArticleTitle">
+          <h1>{$xwdtcontent.title}</h1>
+        </div>
+        <div class="ArticleMessage"><span>发布时间：{$xwdtcontent.create_time|date="Y-m-d",###}</span><span>人气：{$xwdtcontent.shownum}<i id="hits"><script src="../plus/count-yes_1_1.js" type='text/javascript' language="javascript"></script></i></span></div>
+        <div id="article" class="ArticleTencont">
+          <p>
+            <p>{$xwdtcontent.editorValue|htmlspecialchars_decode}</p>
+
+        </div>
+        {/volist}
+        <div class="clear"></div>
+        <div class="reLink clearfix">
+          {volist name="prev" id="pre"}
+          <div class="prevLink">上一篇：<a href='/xwdtcontent/{$pre.id}.html'>{$pre.title}</a></div>
+          {/volist}
+          {volist name="next" id="nex"}
+          <div class="nextLink">下一篇：<a href='/xwdtcontent/{$nex.id}.html'>{$nex.title}</a> </div>
+          {/volist}
+        </div>
+        <!--推荐资讯开始-->
+        {include file="content/xgtj" /}
+        <!--推荐资讯结束--> 
+      </div>
+      <!--文章内容结束--> 
+    </div>
+  </div>
+</div>
+<!--页尾开始-->
+{/block}

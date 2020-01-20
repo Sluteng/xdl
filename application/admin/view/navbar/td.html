@@ -1,0 +1,7 @@
+<td><input type="checkbox" name="id[]" value="{$vo.id}"></td>
+<td>{$vo.id}</td>
+<td><a href="{:url('Navbarson/index', ['state' => $vo.id])}">{$vo.navbar|high_light=$Request.param.navbar}</a></td>
+<td>{$vo.link}</td>
+<td>{$vo.create_time|date="Y-m-d",###}</td>
+<td>{$vo.update_time|date="Y-m-d",###}</td>
+<td>{$vo.status|get_status}</td>

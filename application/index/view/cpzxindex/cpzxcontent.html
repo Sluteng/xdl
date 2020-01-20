@@ -1,0 +1,294 @@
+{extend name="base/base" /}
+
+{block name="tdk"}
+{volist name="sytdkResult" id="sytdk"}
+{volist name="cpzxconResult" id="cpzxcon"}
+{if $cpzxcon.tdktitle==null}
+<title>{$sytdk.tdktitle}</title>
+{else}
+<title>{$cpzxcon.tdktitle}</title>
+{/if}
+<meta name="Description" Content="{$cpzxcon.tdkdescription}">
+{if $cpzxcon.tdkkeywords==null}
+<meta name="Keywords" Content="{$sytdk.tdkkeywords}">
+{else}
+<meta name="Keywords" Content="{$cpzxcon.tdkkeywords}">
+{/if}
+{/volist}
+{/volist}
+{/block}
+
+{block name="content"}
+<!--内页大图开始-->
+<div class="nybanner" aos="fade-up" aos-easing="ease" aos-duration="700">
+  {volist name="largeimgResult" id="largeimg"}
+  <img src="{$largeimg.img}" alt="">
+  {/volist}
+</div>
+<!--内页大图结束-->
+<div class="submian">
+  <div class="w1200 clearfix">
+    <div class="sobtitle"><s class="ico"></s>
+      您的位置：
+      <a href='/index.html'>主页</a> > 
+      {volist name="navbarResult" id="navbar"}
+      {if $key == 1}
+      <a href='../cpzxindex.html'>{$navbar.navbar}</a> 
+      {if $id!=null}
+      {volist name="cpzxindexsonResult" id="cpzxindexson"}
+       > <a href='/cpzxindexid/{$cpzxindexson.id}.html' style="color:red;">{$cpzxindexson.title}</a>
+      {/volist}
+      {/if}
+      {/if}
+      {/volist}
+    </div>
+    <div class="subleft fl">
+  <!--栏目分类开始-->
+  <div class="lefta bor9">
+    <div class="title">
+      {volist name="navbarResult" id="navbar"}
+      {if $key == 1}
+      <h2>{$navbar.navbar}</h2>
+      {/if}
+      {/volist}
+    </div>
+    <ul id="accordion" class="accordion">
+      {volist name="navbarResult" id="navbar"}
+        {if $navbar.id == 2}
+        {volist name="navbarsonResult" id="navbarson"}
+        {if $navbar.id == $navbarson.state}
+        <li>
+          <div class="link"><i class="fa fa-pencil-square-o"></i>{$navbarson.navbarson}<i class="fa fa-chevron-down"></i></div>
+          <ul class="submenu">
+            {volist name="cpzxindexson1Result" id="cpzxindexson"}
+            {if $navbarson.id == $cpzxindexson.state}
+              <li><a href="/cpzxindexid/{$cpzxindexson.id}">{$cpzxindexson.title}</a></li>
+            {/if}
+            {/volist}
+          </ul>
+        </li>
+        {/if}
+        {/volist}
+        {/if}
+        {/volist}
+    </ul>
+  </div>
+  <script>
+   $(function() {
+    var Accordion = function(el, multiple) {
+        this.el = el || {};
+        this.multiple = multiple || false;
+
+        // Variables privadas
+        var links = this.el.find('.link');
+        // Evento
+        links.on('click', {
+            el: this.el,
+            multiple: this.multiple
+        }, this.down)
+    };
+
+    Accordion.prototype.down = function(e) {
+        var $el = e.data.el;
+        $this = $(this);
+        $next = $this.next();
+
+        $next.slideToggle();
+        $this.parent().toggleClass('open');
+
+        if (!e.data.multiple) {
+            $el.find('.submenu').not($next).slideUp().parent().removeClass('open');
+        }
+    };
+    var accordion = new Accordion($('#accordion'), false);
+    $('.submenu li').click(function() {
+        $(this).addClass('current').siblings('li').removeClass('current');
+    });
+});
+</script>
+  <!--栏目分类结束--> 
+
+  <!--推荐产品开始-->
+  {include file="content/content" /}
+  <!--联系我们结束--> 
+</div>
+
+    <div class="subright fr"> 
+      <!--图片内容开始-->
+      <div class="conBox">
+        {volist name="cpzxconResult" id="cpzxcon"}
+        <div class="ArticleTitle">
+          <h1>{$cpzxcon.title}</h1>
+        </div>
+        <div class="ArticleMessage">
+          <span>发布时间：{$cpzxcon.create_time|date="Y-m-d H:i:s",###}</span>
+          <span>人气：{$cpzxcon.shownum}
+            <i id="hits">
+              <script src="../plus/count-yes_13_1.js" type='text/javascript' language="javascript"></script>
+            </i>
+          </span>
+        </div>
+        {/volist}
+        <!--组图开始-->
+        <div class="MainBg">
+          <div class="HS10"></div>
+          <div class="OriginalPicBorder">
+            <div id="OriginalPic">
+              <div id="aPrev" class="CursorL" title="上一张"></div>
+              <div id="aNext" class="CursorR" title="下一张"></div>
+              <p class="Hidden">
+              <span class="SliderPicBorder FlRight">
+              <img src="{$cpzxcon.img}" alt="">
+              <div id="article" class="ArticleTencont">
+              {volist name="cpzxconResult" id="cpzxcon"}
+              <p class="wenzi">{$cpzxcon.content}</p>
+              {/volist}
+          </div>
+<!--  -->
+          <div class="canshu">
+            {volist name="cpzxconResult" id="cpzxcon"}
+            {$cpzxcon.editorValue|htmlspecialchars_decode}
+            {/volist}
+          </div>
+              </span>
+              <span class="Clearer"></span></p><p class="Hidden"><span class="SliderPicBorder FlRight"><img src="../uploads/allimg/190108/1-1Z10QH552.jpg" alt="">
+              </span><span class="Clearer"></span></p><p class="Hidden"><span class="SliderPicBorder FlRight"><img src="../uploads/allimg/190108/1-1Z10QH555.jpg" alt=""></span><span class="Clearer"></span></p><p class="Hidden"><span class="SliderPicBorder FlRight"><img src="../uploads/allimg/190108/1-1Z10QH558.jpg" alt=""></span><span class="Clearer"></span></p><p class="Hidden"><span class="SliderPicBorder FlRight"><img src="../uploads/allimg/190108/1-1Z10QH559.jpg" alt=""></span><span class="Clearer"></span></p><p class="Hidden"><span class="SliderPicBorder FlRight"><img src="../uploads/allimg/190108/1-1Z10QH600.jpg" alt=""></span><span class="Clearer"></span></p><p class="Hidden"><span class="SliderPicBorder FlRight"><img src="../uploads/allimg/190108/1-1Z10QJ011.jpg" alt=""></span><span class="Clearer"></span></p> </div>
+          </div>
+          <div class="HS15"></div>
+          <div class="ThumbPicBorder"> <img src="__IMG__/arrowl.jpg" id="btnPrev" class="FlLeft">
+            <img src="__IMG__/arrowr.jpg" id="btnNext" class="FlLeft">
+            <div class="Clearer"></div>
+          </div>
+        </div>
+        <!--组图结束-->
+<script type="text/javascript">
+  //缩略图滚动事件
+  $(".jCarouselLite").jCarouselLite({
+  	btnNext: "#btnNext",
+  	btnPrev: "#btnPrev",
+  	scroll: 1,
+  	speed: 240,
+  	circular: false,
+  	visible: 5
+  });
+  </script> 
+          <script type="text/javascript">
+  var currentImage;
+  var currentIndex = -1;
+
+  //显示大图(参数index从0开始计数)
+  function showImage(index){
+
+  	//更新当前图片页码
+  	$(".CounterCurrent").html(index + 1);
+
+  	//隐藏或显示向左向右鼠标手势
+  	var len = $('#OriginalPic img').length;
+  	if(index == len - 1){
+  		$("#aNext").hide();
+  	}else{
+  		$("#aNext").show();
+  	}
+
+  	if(index == 0){
+  		$("#aPrev").hide();
+  	}else{
+  		$("#aPrev").show();
+  	}
+
+  	//显示大图            
+  	if(index < $('#OriginalPic img').length){
+  		var indexImage = $('#OriginalPic p')[index];
+
+  		//隐藏当前的图
+  		if(currentImage){
+  			if(currentImage != indexImage){
+  				$(currentImage).css('z-index', 2);	
+  				$(currentImage).fadeOut(0,function(){
+  					$(this).css({'display':'none','z-index':1})
+  				});
+  			}
+  		}
+
+  		//显示用户选择的图
+  		$(indexImage).show().css({'opacity': 0.4});
+  		$(indexImage).animate({opacity:1},{duration:200});
+
+  		//更新变量
+  		currentImage = indexImage;
+  		currentIndex = index;
+
+  		//移除并添加高亮
+  		$('#ThumbPic img').removeClass('active');
+  		$($('#ThumbPic img')[index]).addClass('active');
+
+  		//设置向左向右鼠标手势区域的高度
+  		//var tempHeight = $($('#OriginalPic img')[index]).height();
+  		//$('#aPrev').height(tempHeight);
+  		//$('#aNext').height(tempHeight);
+  	}
+  }
+
+  //下一张
+  function ShowNext(){
+  	var len = $('#OriginalPic img').length;
+  	var next = currentIndex < (len - 1) ? currentIndex + 1 : 0;
+  	showImage(next);
+  }
+
+  //上一张
+  function ShowPrep(){
+  	var len = $('#OriginalPic img').length;
+  	var next = currentIndex == 0 ? (len - 1) : currentIndex - 1;
+  	showImage(next);
+  }
+
+  //下一张事件
+  $("#aNext").click(function(){
+  	ShowNext();
+  	if($(".active").position().left >= 144 * 7){
+  		$("#btnNext").click();
+  	}
+  });
+
+  //上一张事件
+  $("#aPrev").click(function(){
+  	ShowPrep();
+  	if($(".active").position().left <= 144 * 7){
+  		$("#btnPrev").click();
+  	}
+  });
+
+  //初始化事件
+  $(".OriginalPicBorder").ready(function(){
+  	ShowNext();
+
+  	//绑定缩略图点击事件
+  	$('#ThumbPic li').bind('click',function(e){
+  		var count = $(this).attr('rel');
+  		showImage(parseInt(count) - 0);
+  	});
+  });
+</script>
+        <!--统计代码开始-->
+        <div id="bdshare" class="share bdsharebuttonbox bdshare-button-style0-16"> <a href="" class="bds_more" data-cmd="more">分享到：</a> <a href="" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a> <a href="" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a> <a href="" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a> <a href="" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a> <a href="" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a> </div>
+        <!--统计代码结束-->
+        <div class="clear"></div>
+        <div class="reLink clearfix">
+          {volist name="prev" id="pre"}
+          <div class="prevLink">上一篇：<a href='/cpzxcontent/{$pre.id}.html'>{$pre.title}</a> </div>
+          {/volist}
+          {volist name="next" id="nex"}
+          <div class="nextLink">下一篇：<a href='/cpzxcontent/{$nex.id}.html'>{$nex.title}</a> </div>
+          {/volist}
+        </div>
+        <!--推荐资讯开始-->
+        {include file="content/xgtj" /}
+        <!--推荐资讯结束--> 
+      </div>
+      <!--图片内容结束--> 
+    </div>
+  </div>
+</div>
+<!--页尾开始-->
+{/block}

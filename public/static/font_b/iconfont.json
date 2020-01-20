@@ -1,0 +1,23 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "100581",
+      "name": "淘宝",
+      "font_class": "taobao",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "3979173",
+      "name": "淘宝",
+      "font_class": "taobao1",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    }
+  ]
+}

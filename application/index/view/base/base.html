@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC>
+<html xmlns="">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+{block name="css"}{/block}
+{block name="tdk"}
+{volist name="sytdkResult" id="sytdk"}
+<title>{$sytdk.tdktitle}</title>
+<meta name="keywords" content="{$sytdk.tdkkeywords}" />
+<meta name="description" content="{$sytdk.tdkdescription}"/>
+{/volist}
+{/block}
+<meta http-equiv="mobile-agent" content="format=xhtml;url=/m/index.php">
+<meta name="author" content="order by dede58.com">
+<meta name="viewport" content="width=1380">
+<link href="__CSS__/style.css" rel="stylesheet">
+<link href="__CSS__/aos.css" rel="stylesheet">
+<link href="__CSS__/common.css" rel="stylesheet">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="Bookmark" href="__ROOT__/favicon.ico" >
+<link rel="Shortcut Icon" href="__ROOT__/favicon.ico" />
+<link rel="stylesheet" href="__FONTB__/iconfont.css">
+<script src="__JS__/jquery.js"></script>
+<script src="__JS__/jquery.superslide.2.1.1.js"></script>
+<script src="__JS__/common.js"></script>
+<script type="text/javascript">if(window.location.toString().indexOf('pref=padindex') != -1){}else{if(/AppleWebKit.*Mobile/i.test(navigator.userAgent) || (/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(navigator.userAgent))){if(window.location.href.indexOf("?mobile")<0){try{if(/Android|Windows Phone|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)){window.location.href="/m/index.php";}else if(/iPad/i.test(navigator.userAgent)){}else{}}catch(e){}}}}
+</script>
+</head>
+{block name="nav"}
+<body>
+<!--页头开始-->
+
+<div class="header_main"> 
+  <div class="header w1200 clearfix">
+    <a class="logo fl" href="Index.html" title="">
+    {volist name="logoResult" id="logo"}
+    <h1><img src="{$logo.img}" alt="河北鑫动力"></h1>
+    {/volist}
+    </a>
+    <div class="tel fl" aos="fade-left" aos-easing="ease" aos-duration="700" aos-delay="100">
+      <s class="ico"></s>
+      {volist name="lxwmindexResult" id="lxwmindex"}
+      <span>{$lxwmindex.telephone}</span><br>
+      <span>{$lxwmindex.mobilephone}</span>
+      {/volist}
+    </div>
+    <!--搜索栏开始-->
+    <div class="search fr" aos="fade-left" aos-easing="ease" aos-duration="700" aos-delay="100">
+      <form name="search" action="/souso.html" method="post">
+        <input class="stxt" type="text" name="getsearch" placeholder="请输入关键字">
+        <input type="submit" class="sbtn" value="搜索">
+      </form>
+    </div>
+    <!--搜索栏结束-->
+  </div>
+</div>
+<!--页头结束-->
+
+<!--导航开始-->
+<div class="nav_main" aos="fade-down" aos-easing="ease" aos-duration="700">
+  <div class="nav w1200">
+    <ul class="list clearfix" id="nav">
+      <li id="cur"><!--  class='hover' -->
+        <a href="/index.html" title="网站首页">网站首页</a>
+      </li>
+      {volist name="navbarResult" id="navbar"}
+      <li>
+        <a href="/{$navbar.link}.html" title="{$navbar.navbar}" class=''>{$navbar.navbar}</a> 
+        <dl>
+          {volist name="navbarsonResult" id="navbarson"}
+          {if $navbar.id == $navbarson.state}
+          <dd><a href="/{$navbarson.link}.html" title="{$navbarson.navbarson}">{$navbarson.navbarson}</a> </dd>
+          {/if}
+          {/volist}
+        </dl>
+      </li>
+      {/volist}
+    </ul>
+  </div>
+</div>
+{/block}
+{block name="content"}内容区域{/block}
+{block name="footer"}
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https'){
+   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else{
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!--页尾开始-->
+<div class="footer">
+  <div class="w1200 clearfix">
+    <!--友情链接开始-->
+    <div class="links" aos="fade-up" aos-easing="ease" aos-duration="700">
+      <span>友情链接：</span>
+      {volist name="sylinksResult" id="sylinks"}
+      <a href='{$sylinks.link}' target='_blank'>{$sylinks.name}</a>
+      {/volist}
+    </div>
+    <!--友情链接结束-->
+    <!--联系方式开始-->
+    <div class="contact tel fl" aos="fade-up" aos-easing="ease" aos-duration="700" aos-delay="300"> 
+      <!--二维码开始-->
+      {volist name="sywechatResult" id="sywechat"}
+      <div class="ewm fl"> <img src="{$sywechat.img}" alt="二维码"></div>
+      {/volist}
+      <!--二维码结束-->
+      <div class="contact_info fl">
+        {volist name="lxwmindexResult" id="lxwmindex"}
+        <p class="p1">咨询热线:</p>
+        <p class="tel">{$lxwmindex.telephone}</p>
+        <p class="p2">手机：{$lxwmindex.mobilephone}</p>
+        <p class="p1">邮　箱：{$lxwmindex.mailbox}</p>
+        {/volist}
+      </div>
+    </div>
+    <!--联系方式结束-->
+    <!--底部导航开始-->
+    <div class="bNav fr" aos="fade-up" aos-easing="ease" aos-duration="700" aos-delay="300">
+      {volist name="navbarResult" id="navbar"}
+      <div class="item">
+        <h3>
+          <a href="/{$navbar.link}.html" title="{$navbar.navbar}">{$navbar.navbar}</a>
+        </h3>
+        {volist name="navbarsonResult" id="navbarson"}
+        {if $navbar.id == $navbarson.state}
+          <a href="/{$navbarson.link}.html" title="{$navbarson.navbarson}">{$navbarson.navbarson}</a>
+        {/if}
+        {/volist}
+       </div>
+       {/volist}
+    </div>
+    <!--底部导航结束-->
+  </div>
+</div>
+<!--页尾结束-->
+
+<!--版权开始-->
+<div class="copyright">
+  {volist name="lxwmindexResult" id="lxwmindex"}
+  {volist name="copyrightResult" id="copyright"}
+  <div class="w1200"> Copyright <a href="/admin" target="_blank">&copy;</a> {$copyright.copyright}　地址：{$lxwmindex.address}　备案号：<a href="http://beian.miit.gov.cn" target="_blank" title="冀ICP备18006048号-4">{$copyright.number}
+  <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1278226101'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s9.cnzz.com/z_stat.php%3Fid%3D1278226101%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+  </a>
+  </div>
+  {/volist}
+  {/volist}
+</div>
+<!--版权结束-->
+
+<!--浮动客服开始-->
+<dl class="toolbar" id="toolbar">
+  <dd>
+    <a href="https://shop599473736.taobao.com/index.htm?spm=2013.1.w5001-22364414312.2.63687657BGaq9U&scene=taobao_shop" title="点击进入店铺" target="_blank">
+    <i class="iconfont icon-taobao code">
+    </i>
+    </a>
+    <ul id="pop" class="pop pop-code">
+      <li>
+        {volist name="taobaoResult" id="taobao"}
+        <img src="{$taobao.img}" alt="二维码">
+        <h3>
+          <b>扫一扫进入店铺</b>
+          鑫动力淘宝店铺
+        </h3>
+        {/volist}
+      </li>
+    </ul>
+  </dd>
+  {volist name="lxwmindexResult" id="lxwmindex"}
+  <dd>
+    <a class="slide tel slide-tel" href="javascript:;" title="咨询热线">
+      <i>
+        <span></span>
+      </i>{$lxwmindex.telephone}
+    </a>
+  </dd>
+  {/volist}
+  <dd><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2176456995&amp;site=qq&amp;menu=yes&amp;from=message&amp;isappinstalled=0" title="在线QQ"><i class="qq"><span></span></i></a></dd>
+  <dd><i class="code"><span></span></i>
+    <ul class="pop pop-code">
+      <li>
+        {volist name="sywechatResult" id="sywechat"}
+        <img src="{$sywechat.img}" alt="二维码">
+        {/volist}
+        <h3>
+          {volist name="lxwmindexResult" id="lxwmindex"}
+          <b>QQ：{$lxwmindex.qq}</b>
+          {/volist}
+          微信二维码
+        </h3>
+      </li>
+    </ul>
+  </dd>
+  <dd> <a href="javascript:;"><i id="top" class="top"><span></span></i></a></dd>
+</dl>
+<!--浮动客服结束-->
+<script src="__JS__/aos.js"></script>
+<script src="__JS__/app.js"></script>
+<script type="text/javascript">
+	AOS.init({
+		easing: 'ease-out-back',
+		duration: 1000
+	});
+</script>
+{/block}
+{block name="js"}{/block}
+</body>
+</html>

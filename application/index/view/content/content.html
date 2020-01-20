@@ -1,0 +1,32 @@
+<div class="leftnews bor9">
+    <div class="title"><i>推荐产品</i></div>
+    <div class="leftprocomt clearfix">
+      <ul>
+        {volist name="tjResult" id="tj"}
+        {if $tj.display==1}
+        <li style='{if ($key+1)%2==0}margin-right:0;{/if}'>
+          <a href="/cpzxcontent/{$tj.id}.html" title="{$tj.title}">
+            <img src="{$tj.img}" alt="{$tj.title}">
+          <p>{$tj.title}</p>
+          </a>
+        </li>
+        {/if}
+        {/volist}
+      </ul>
+    </div>
+  </div>
+  <!--推荐产品结束--> 
+  
+  <!--联系我们开始-->
+  <div class="leftnews bor9">
+    <div class="title"><i>联系我们</i></div>
+    <div class="leftcont">
+      {volist name="lxwmindexResult" id="lxwmindex"}
+      <h2>{$lxwmindex.company}</h2>
+      <span>地址：{$lxwmindex.address}<br>
+      手机：{$lxwmindex.mobilephone} <br>
+      </span>
+      <p>咨询热线<i>{$lxwmindex.telephone}</i></p>
+      {/volist}
+    </div>
+  </div>
